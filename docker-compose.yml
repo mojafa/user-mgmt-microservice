@@ -2,19 +2,23 @@ version: latest
 
 services:
 
-  mysql-development:
+  db:
+    container_name: mysqL_container
     image: mysql:8
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: user_mgmt
-
+      MYSQL_ROOT_PASSWORD: finsprint
+      MYSQL_DATABASE: finsprint_user_mgmt
     ports:
-      - "3308:3306"
+      - "3306:3306"
+
+    user_management_container:
+      container_name: user_mgmt_microservice
+      image: mojafa/jafamike:user_mgmt_microservice
+      restart: always
+      ports:
+        - "28060:28060"
+      links:
+        - mysqL_container
 
 
-#          docker run -it \
-#          -e MYSQL_ROOT_PASSWORD="root" \
-#          -e MYSQL_DATABASE="users" \
-#          -v $(pwd)/users_mysql_data:/var/lib/mysql \
-#          -p 3306:3306 \
-#          mysql:8
+
