@@ -1,24 +1,21 @@
 version: latest
-
 services:
-
-  db:
-    container_name: mysqL_container
+  mysql_container:
+    container_name: mysql_container
     image: mysql:8
     environment:
       MYSQL_ROOT_PASSWORD: finsprint
       MYSQL_DATABASE: finsprint_user_mgmt
     ports:
-      - "3306:3306"
-
-    user_management_container:
+      - "3308:3306"
+  user_management_container:
       container_name: user_mgmt_microservice
       image: mojafa/jafamike:user_mgmt_microservice
       restart: always
       ports:
         - "28060:28060"
       links:
-        - mysqL_container
+        - mysql_container
 
 
 
