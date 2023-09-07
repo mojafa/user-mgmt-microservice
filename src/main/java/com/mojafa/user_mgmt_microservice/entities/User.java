@@ -28,13 +28,8 @@ public class User {
     @Column(name="password", nullable = false)
     private String password;
 
-
-
-
     @Column(name="enabled")
     private boolean enabled;
-
-
 
     @Basic
     private java.time.LocalDateTime createdAt;

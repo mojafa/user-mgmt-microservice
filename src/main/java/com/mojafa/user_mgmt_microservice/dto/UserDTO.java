@@ -50,8 +50,8 @@ public class UserDTO implements Serializable {
 
     private Long id;
     private String username;
-    private String name;
-    private String surname;
+    private String firstName;
+    private String lastName;
     private String email;
     private boolean enabled;
     private LocalDateTime createdAt;
